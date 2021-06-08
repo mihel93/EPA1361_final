@@ -264,18 +264,14 @@ def get_model_for_problem_formulation(problem_formulation_id):
         dike_model.outcomes = outcomes
     
     
-    # 8-objectives PF:
+    # 7-objectives PF:
     elif problem_formulation_id == 6:
         outcomes = []
                 
-        outcomes.append(ScalarOutcome('OverIjsel Expected Number of Deaths',
-                          variable_name=['{}_Expected Number of Deaths'.format(dike)
-                                         for dike in function.dikelist[len(function.dikelist)-1:len(function.dikelist)]],function=sum_over,                                         kind=direction))
-        
-        outcomes.append(ScalarOutcome('Gelderland Expected Number of Deaths',
-                          variable_name=['{}_Expected Number of Deaths'.format(dike)
-                                         for dike in function.dikelist[0:len(function.dikelist)-2]],function=sum_over, kind=direction))
-            
+        outcomes.append(ScalarOutcome('OExpected Number of Deaths',
+                          variable_name=['{}_Expected Number of Deaths'.format(dike)],kind=direction))
+                                         
+                    
         outcomes.append(ScalarOutcome('RfR Total Costs', kind=direction))
         outcomes.append(ScalarOutcome('Expected Evacuation Costs', kind=direction))
         
